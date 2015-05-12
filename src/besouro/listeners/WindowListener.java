@@ -86,6 +86,12 @@ public class WindowListener implements IWindowListener, IPartListener, IDocument
 	}
 
 	public void partDeactivated(IWorkbenchPart part) {
+		if (part instanceof ITextEditor) {
+			if(part.getTitle().contains(".java")){
+				PlatformUI.getWorkbench().saveAllEditors(false);
+			}
+			
+		}
 	}
 
 	public void documentAboutToBeChanged(DocumentEvent event) {
